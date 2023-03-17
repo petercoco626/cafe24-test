@@ -12,6 +12,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   // }
 
   const code: string = req.query.code as string;
+  const mallId: string = req.query.mallId as string;
   console.log(code);
 
   const params = {
@@ -21,7 +22,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   };
 
   const tokenResponse = await axios.post(
-    'https://planningo.cafe24api.com/api/v2/oauth/token',
+    `https://${mallId}.cafe24api.com/api/v2/oauth/token`,
     params,
     {
       headers: {

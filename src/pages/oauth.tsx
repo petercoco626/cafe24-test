@@ -18,7 +18,7 @@ function OAuth() {
     //   }
     // );
 
-    const res = await axios.post(`/api/auth?code=${code}`);
+    const res = await axios.post(`/api/auth?code=${code}&mallId=${mallId}`);
 
     if (res.status === 200) {
       console.log('HIHI');
