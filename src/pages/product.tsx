@@ -9,7 +9,9 @@ function Product() {
       ? sessionStorage.getItem('accessToken')
       : null;
 
-  console.log(mallId, accessToken);
+  // const mallId = 'dkliraer';
+  // const accessToken = 'xeDFGFSITSxPVYUIhMRFBF';
+
   const { data } = useQuery(
     ['products', mallId],
     async () =>
@@ -19,8 +21,8 @@ function Product() {
   return (
     data && (
       <div>
-        {data.data.map((product: any) => (
-          <div key={product.product_name}>{product.product_name}</div>
+        {data.data.products.map((product: any) => (
+          <div key={product.product_name}>상품명 : {product.product_name}</div>
         ))}
       </div>
     )
