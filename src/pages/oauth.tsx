@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useRouter } from 'next/router';
+import Router, { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
 function OAuth() {
@@ -20,13 +20,17 @@ function OAuth() {
     // );
 
     const res = await axios.post(`/api/auth?code=${code}&mallId=${mallId}`);
+    sessionStorage.setItem('accessToken', res.data.accessToken);
+    sessionStorage.setItem('mallId', mallId);
 
-    if (res.status === 200) {
-      const response = await axios.get(
-        `/api/product?token=${res.data.accessToken}&mallId=${mallId}`
-      );
-      console.log(response);
-    }
+    location.push('/product');
+
+    // if (res.status === 200) {
+    //   const response = await axios.get(
+    //     `/api/product?token=${res.data.accessToken}&mallId=${mallId}`
+    //   );
+    //   console.log(response);
+    // }
   };
 
   useEffect(() => {
@@ -40,7 +44,11 @@ function OAuth() {
     }
   }, [location]);
 
-  return <div>oauth...</div>;
+  return (
+    <div>
+      <div></div>
+    </div>
+  );
 }
 
 export default OAuth;
