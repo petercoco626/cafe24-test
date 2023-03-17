@@ -2,8 +2,12 @@ import axios from 'axios';
 import { useQuery } from 'react-query';
 
 function Product() {
-  const mallId = sessionStorage.getItem('mallId');
-  const accessToken = sessionStorage.getItem('accessToken');
+  const mallId =
+    typeof window !== 'undefined' ? sessionStorage.getItem('mallId') : null;
+  const accessToken =
+    typeof window !== 'undefined'
+      ? sessionStorage.getItem('accessToken')
+      : null;
   const { data } = useQuery(
     ['products', mallId],
     async () =>

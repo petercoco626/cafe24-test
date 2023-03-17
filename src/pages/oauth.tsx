@@ -20,8 +20,9 @@ function OAuth() {
     // );
 
     const res = await axios.post(`/api/auth?code=${code}&mallId=${mallId}`);
-    sessionStorage.setItem('accessToken', res.data.accessToken);
-    sessionStorage.setItem('mallId', mallId);
+    typeof window !== 'undefined' &&
+      sessionStorage.setItem('accessToken', res.data.accessToken);
+    typeof window !== 'undefined' && sessionStorage.setItem('mallId', mallId);
 
     location.push('/product');
 
