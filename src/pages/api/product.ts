@@ -25,7 +25,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   );
 
   // server에서 자체 key 가지고 jwt decoding 한 번 하고 보내주는게 좋을 듯.
-  res.json(response);
+  res.json({ message: 'okay' });
 };
 
 export default handler;
