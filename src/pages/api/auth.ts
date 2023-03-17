@@ -27,7 +27,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        Authorization: `Basic R1dPNWNKTUtHSlRwa3psd29Zdk15QzpKdlZBeU5yc0FkMW1CSTNzeUMwVjlC`,
+        Authorization: `Basic Q2pmdGZLN3A3MFY0dTlyc251YlhoSzpkNDBmdTJJTWZFck9ldnJOQ3pmeEtU`,
       },
     }
   );
