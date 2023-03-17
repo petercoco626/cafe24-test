@@ -6,6 +6,7 @@ function OAuth() {
   const location = useRouter();
 
   const getAccessToken = async (code: string, mallId: string) => {
+    // front에서 호출하면 cors 에러가 남. 근데 서버에서 호출하면 안남...?
     // const res = await axios.post(
     //   `https://${mallId}.cafe24api.com/api/v2/oauth/token`,
     //   `grant_type=authorization_code&code=${code}&redirect_uri=https://cafe24-test.vercel.app/oauth`,
@@ -21,7 +22,7 @@ function OAuth() {
     const res = await axios.post(`/api/auth?code=${code}&mallId=${mallId}`);
 
     if (res.status === 200) {
-      const response = await axios.post(
+      const response = await axios.get(
         `/api/product?token=${res.data.accessToken}&mallId=${mallId}`
       );
       console.log(response);
