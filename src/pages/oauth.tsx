@@ -21,15 +21,8 @@ function OAuth() {
     const res = await axios.post(`/api/auth?code=${code}&mallId=${mallId}`);
 
     if (res.status === 200) {
-      console.log(res.data);
-
-      const response = await axios.get(
-        `https://${mallId}.cafe24api.com/api/v2/admin/products`,
-        {
-          headers: {
-            Authorization: res.data.accessToken,
-          },
-        }
+      const response = await axios.post(
+        `/api/product?token=${res.data.accessToken}&mallId=${mallId}`
       );
       console.log(response);
     }
