@@ -1,9 +1,12 @@
 import Head from 'next/head';
 import styles from '@/styles/Home.module.css';
+import { useState } from 'react';
 
 export default function Home() {
+  const [mallId, setMallId] = useState('');
+
   const onClickConnectBuilder = () => {
-    const getCodeUrl = `https://dkliraer.cafe24api.com/api/v2/oauth/authorize?response_type=code&client_id=${process.env.NEXT_PUBLIC_CAFE24_CLIENT_ID}&state=dkliraer123&redirect_uri=https://cafe24-test.vercel.app/oauth&scope=mall.read_personal,mall.write_personal,mall.read_product`;
+    const getCodeUrl = `https://${mallId}.cafe24api.com/api/v2/oauth/authorize?response_type=code&client_id=${process.env.NEXT_PUBLIC_CAFE24_CLIENT_ID}&state=dkliraer123&redirect_uri=https://cafe24-test.vercel.app/oauth&scope=mall.read_personal,mall.write_personal,mall.read_product`;
     window.location.href = getCodeUrl;
   };
 
@@ -15,8 +18,16 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={styles.main} onClick={onClickConnectBuilder}>
-        cafe24 로그인 !
+      <div className={styles.main}>
+        <input
+          className={styles.input}
+          onChange={(e) => setMallId(e.target.value)}
+          value={mallId}
+        />
+        <button className={styles.button} onClick={onClickConnectBuilder}>
+          {' '}
+          cafe24 로그인 !
+        </button>
       </div>
     </>
   );

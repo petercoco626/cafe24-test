@@ -25,7 +25,7 @@ function OAuth() {
 
   useEffect(() => {
     if (location.query.code) {
-      // console.log(location.query.code);
+      console.log(location);
 
       getAccessToken(location.query.code as string);
     }
