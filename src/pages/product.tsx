@@ -8,6 +8,8 @@ function Product() {
     typeof window !== 'undefined'
       ? sessionStorage.getItem('accessToken')
       : null;
+
+  console.log(mallId, accessToken);
   const { data } = useQuery(
     ['products', mallId],
     async () =>
