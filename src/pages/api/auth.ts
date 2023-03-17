@@ -7,9 +7,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   // await runMiddleware(req, res, cors);
   const { method } = req;
 
-  if (method !== 'GET') {
-    res.status(400).json({ message: 'bad request.' });
-  }
+  // if (method !== 'GET') {
+  //   res.status(400).json({ message: 'bad request.' });
+  // }
 
   const code: string = req.query.code as string;
   console.log(code);

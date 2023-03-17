@@ -1,11 +1,12 @@
 import Head from 'next/head';
 import styles from '@/styles/Home.module.css';
 import { useState } from 'react';
+import axios from 'axios';
 
 export default function Home() {
   const [mallId, setMallId] = useState('');
 
-  const onClickConnectBuilder = () => {
+  const onClickConnectBuilder = async () => {
     const getCodeUrl = `https://${mallId}.cafe24api.com/api/v2/oauth/authorize?response_type=code&client_id=${process.env.NEXT_PUBLIC_CAFE24_CLIENT_ID}&state=${mallId}&redirect_uri=https://cafe24-test.vercel.app/oauth&scope=mall.read_personal,mall.write_personal,mall.read_product`;
     window.location.href = getCodeUrl;
   };
