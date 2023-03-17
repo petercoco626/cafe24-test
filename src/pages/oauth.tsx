@@ -8,7 +8,14 @@ function OAuth() {
   const getAccessToken = async (code: string) => {
     const res = await axios.post(
       'https://dkliraer.cafe24api.com/api/v2/oauth/token',
-      `grant_type=authorization_code&code=${code}&redirect_uri=https://cafe24-test.vercel.app/oauth`
+      `grant_type=authorization_code&code=${code}&redirect_uri=https://cafe24-test.vercel.app/oauth`,
+      {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          Authorization:
+            'Basic Q2pmdGZLN3A3MFY0dTlyc251YlhoSzpkNDBmdTJJTWZFck9ldnJOQ3pmeEtU=',
+        },
+      }
     );
 
     if (res.status === 200) {
