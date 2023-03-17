@@ -6,17 +6,19 @@ function OAuth() {
   const location = useRouter();
 
   const getAccessToken = async (code: string, mallId: string) => {
-    const res = await axios.post(
-      `https://${mallId}.cafe24api.com/api/v2/oauth/token`,
-      `grant_type=authorization_code&code=${code}&redirect_uri=https://cafe24-test.vercel.app/oauth`,
-      {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          Authorization:
-            'Basic R1dPNWNKTUtHSlRwa3psd29Zdk15QzpKdlZBeU5yc0FkMW1CSTNzeUMwVjlC=',
-        },
-      }
-    );
+    // const res = await axios.post(
+    //   `https://${mallId}.cafe24api.com/api/v2/oauth/token`,
+    //   `grant_type=authorization_code&code=${code}&redirect_uri=https://cafe24-test.vercel.app/oauth`,
+    //   {
+    //     headers: {
+    //       'Content-Type': 'application/x-www-form-urlencoded',
+    //       Authorization:
+    //         'Basic R1dPNWNKTUtHSlRwa3psd29Zdk15QzpKdlZBeU5yc0FkMW1CSTNzeUMwVjlC=',
+    //     },
+    //   }
+    // );
+
+    const res = await axios.post(`/auth?code=${code}`);
 
     if (res.status === 200) {
       console.log('HIHI');
