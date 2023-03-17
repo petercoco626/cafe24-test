@@ -5,9 +5,9 @@ import { useEffect } from 'react';
 function OAuth() {
   const location = useRouter();
 
-  const getAccessToken = async (code: string) => {
+  const getAccessToken = async (code: string, mallId: string) => {
     const res = await axios.post(
-      'https://dkliraer.cafe24api.com/api/v2/oauth/token',
+      `https://${mallId}.cafe24api.com/api/v2/oauth/token`,
       `grant_type=authorization_code&code=${code}&redirect_uri=https://cafe24-test.vercel.app/oauth`,
       {
         headers: {
@@ -27,7 +27,10 @@ function OAuth() {
     if (location.query.code) {
       console.log(location);
 
-      getAccessToken(location.query.code as string);
+      getAccessToken(
+        location.query.code as string,
+        location.query.state as string
+      );
     }
   }, [location]);
 
